@@ -1,0 +1,387 @@
+:root {
+    --bg-color: #141414;
+    --text-color: #ffffff;
+    --accent-teal: #00f5d4;
+    --accent-green: #00ff9d;
+    --accent-pink: #ff0099;
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Changed from Inter to Poppins */
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Scrolling Background Text */
+.scrolling-background {
+    position: fixed;
+    top: 50%;
+    white-space: nowrap;
+    font-size: 20vw;
+    opacity: 0.05;
+    color: var(--text-color);
+    animation: scroll 30s linear infinite; /* Changed from 60s to 30s for faster animation */
+    z-index: -1;
+    transform: translateY(-50%);
+    font-family: 'Poppins', sans-serif; /* Explicitly set font-family */
+    font-weight: 600; /* Added Semi Bold weight */
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Glass Effect */
+.glass-nav, .glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 3rem; /* Increased padding from default to give more space */
+    margin: 2rem 0; /* Add some vertical margin if needed */
+}
+
+/* Specifically for the About section if needed */
+.about .glass-panel {
+    padding: 3rem 4rem; /* Even more padding if you want horizontal spacing too */
+}
+
+.about p {
+    margin-bottom: 2rem; /* Add bottom margin to the paragraph if needed */
+}
+
+/* Navigation */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    margin: 1.5rem 2rem; /* Increased margin to create space from edges */
+    border-radius: 12px;
+}
+
+/* For smaller screens, adjust margins to maintain visibility */
+@media (max-width: 768px) {
+    header {
+        margin: 1rem; /* Slightly smaller margin on mobile */
+    }
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, var(--accent-teal), var(--accent-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover, nav a.active {
+    background: var(--glass-bg);
+    color: var(--accent-teal);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 0.5rem; /* Reduced from 1rem to bring the subtitle closer */
+    background: linear-gradient(45deg, var(--accent-teal), var(--accent-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    margin-bottom: 3rem; /* Added more space between subtitle and button */
+    font-size: 1.2rem; /* Optional: adjust size if needed */
+}
+
+.cta-button {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    background: #1a1a1a; /* Dark grey background */
+    border: 2px solid transparent; /* Transparent border for gradient */
+    border-radius: 30px;
+    color: var(--text-color);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+/* Create gradient border effect */
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #00f5d4, #0066ff);
+    border-radius: 30px;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+}
+
+/* Create inner background to show only border gradient */
+.cta-button::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background: #1a1a1a; /* Dark grey background */
+    border-radius: 28px;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+}
+
+/* Button hover effect */
+.cta-button:hover::after {
+    opacity: 0; /* Hide the inner background on hover to show full gradient */
+}
+
+/* Button active/click state */
+.cta-button:active {
+    transform: scale(0.98); /* Just a small scale effect when clicked */
+}
+
+/* Sections */
+section {
+    padding: 6rem 2rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    background: linear-gradient(45deg, var(--accent-teal), var(--accent-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Nominees Grid */
+.nominees-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.nominee-card {
+    padding: 2rem;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.nominee-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Testimonials */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.testimonial-card {
+    padding: 2rem;
+    text-align: center;
+}
+
+/* Events Timeline */
+.events-timeline {
+    display: grid;
+    gap: 2rem;
+}
+
+.event {
+    padding: 1rem;
+    border-left: 3px solid var(--accent-teal);
+}
+
+/* Links Grid */
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.link-card {
+    padding: 2rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: transform 0.3s ease;
+}
+
+.link-card:hover {
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 4rem;
+}
+
+/* Animations */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+}
+
+.nominee-card.glass-panel {
+    padding: 3rem;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 500px; /* To make the single card not too wide */
+}
+
+.nominee-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--accent-teal), var(--accent-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nominee-card p {
+    color: #a0a0a0; /* Slightly muted text color */
+    margin-bottom: 0.5rem;
+}
+
+.nominee-card p:last-child {
+    margin-bottom: 0;
+}
+
+/* Add these new styles */
+.event {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.event-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #00ff9d; /* Bright green color */
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #00ff9d;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
