@@ -98,56 +98,27 @@ document.querySelectorAll('section').forEach(section => {
 
 // Sample Nominees Data
 const nominees = [
-    {
-        name: "TechVision Corp",
-        members: 1500,
-        orders: 12000,
-        nomination: "Best Digital Innovation"
-    },
-    {
-        name: "Creative Solutions",
-        members: 800,
-        orders: 8500,
-        nomination: "Community Excellence"
-    },
-    {
-        name: "Digital Pioneers",
-        members: 2000,
-        orders: 15000,
-        nomination: "Technical Achievement"
-    }
+    { name: "Peak Branding", members: 60, orders: 50, nomination: "Aurevo Creative Awards" },
+    { name: "Seattle Roleplay", members: 100, nomination: "Aurevo Roleplay Awards" },
+    { name: "FlareUP Advertising", members: 150, nomination: "Aurevo Miscellanous Awards" },
+    // 5 new cards added:
+    { name: "Pop Rock's World", members: 270, nomination: "Aurevo Miscellanous Awards" },
+    { name: "Louisiana State Roleplay", members: 20, nomination: "Aurevo Roleplay Awards" },
 ];
 
 // Populate Nominees
 const nomineesGrid = document.querySelector('.nominees-grid');
-// Clear any existing content
-nomineesGrid.innerHTML = `
-    <div class="nominee-card glass-panel">
-        <h3>No Nominees Yet</h3>
-        <p><strong>Nominations are still open.</strong> Head to the discord to get nominated!</p>
-        <p>Stay tuned for updates!</p>
-    </div>
-`;
-
-// Active Navigation Highlight
-window.addEventListener('scroll', () => {
-    let current = '';
-    const sections = document.querySelectorAll('section');
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        if (pageYOffset >= sectionTop - 60) {
-            current = section.getAttribute('id');
-        }
-    });
-
-    document.querySelectorAll('nav a').forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').slice(1) === current) {
-            link.classList.add('active');
-        }
-    });
+nominees.forEach(nominee => {
+    const card = document.createElement('div');
+    card.className = 'nominee-card glass-panel';
+    card.innerHTML = `
+        <h3>${nominee.name}</h3>
+        <p>Members: ${nominee.members}</p>
+        <p>Nominated for: ${nominee.nomination}</p>
+    `;
+    nomineesGrid.appendChild(card);
 });
+
 
 // Update the events section population
 const eventsTimeline = document.querySelector('.events-timeline');
